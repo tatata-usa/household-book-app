@@ -13,7 +13,7 @@ import { ExpenseCategory, IncomeCategory } from '../../types';
 const IconComponents: Record<IncomeCategory | ExpenseCategory, JSX.Element> = {
   食費: <FastfoodIcon fontSize="small"/>,
   日用品: <AlarmIcon fontSize="small"/>,
-  住宅費: <AddHomeIcon fontSize="small"/>,
+  住居費: <AddHomeIcon fontSize="small"/>,
   交際費: <Diversity3Icon fontSize="small"/>,
   娯楽: <SportsTennisIcon fontSize="small"/>,
   交通費: <TrainIcon fontSize="small"/>,
