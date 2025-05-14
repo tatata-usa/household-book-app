@@ -8,7 +8,7 @@ import AppLayout from './component/AppLayout';
 import { theme } from './theme/theme'
 import { ThemeProvider } from '@emotion/react';
 import { Transaction } from './types/index';
-import { collection, getDocs, addDoc, deleteDoc, doc } from "firebase/firestore";
+import { collection, getDocs, addDoc, deleteDoc,updateDoc, doc } from "firebase/firestore";
 import {db} from "./firebase"
 import { formatMonth } from './utils/formatting';
 import { Schema } from './validations/schema';
@@ -98,12 +98,33 @@ function App() {
     }
   }
 
+  // 取引を更新する処理
+  const handleUpdateTransaction = async(transaction: Schema, transactionId: string) => {
+    // firestoreのデータ更新
+    try {
+      const docRef = doc(db, "Transactions", transactionId);
+      await updateDoc(docRef , transaction);
+      const updatedTransactions = transactions.map((t) =>
+        t.id === transactionId ? {...t, ...transaction} : t
+      ) as Transaction[];
+      setTransactions(updatedTransactions);
+    } catch(err) {
+      if(isFireStoreError(err)) {
+        console.error("firebaseのエラーは: ", err)
+        console.error(err.message)
+        console.error(err.code)
+      } else {
+        console.error("一般的なエラーは: ", err)
+      }
+    }
+  }
+
   return (
     <ThemeProvider theme={theme}>
-      <Router>
+      <Router future={{ v7_relativeSplatPath: true, v7_startTransition: true }}>
         <Routes>
           <Route path="/" element={<AppLayout />}>
-            <Route index element={<Home monthlyTransactions={monthlyTransactions} setCurrentMonth={setCurrentMonth} onSaveTransaction={handleSaveTransaction} onDeleteTransaction={handleDeleteTransaction}/>}></Route>
+            <Route index element={<Home monthlyTransactions={monthlyTransactions} setCurrentMonth={setCurrentMonth} onSaveTransaction={handleSaveTransaction} onDeleteTransaction={handleDeleteTransaction} onUpdateTransaction={handleUpdateTransaction}/>}></Route>
             <Route path='/report' element={<Report />}></Route>
             <Route path='/*' element={<NoMatch />}></Route>
             </Route>
