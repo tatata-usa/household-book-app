@@ -125,7 +125,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Home monthlyTransactions={monthlyTransactions} setCurrentMonth={setCurrentMonth} onSaveTransaction={handleSaveTransaction} onDeleteTransaction={handleDeleteTransaction} onUpdateTransaction={handleUpdateTransaction}/>}></Route>
-            <Route path='/report' element={<Report />}></Route>
+            <Route path='/report' element={<Report currentMonth={currentMonth} setCurrentMonth={setCurrentMonth}/>}></Route>
             <Route path='/*' element={<NoMatch />}></Route>
             </Route>
         </Routes>
