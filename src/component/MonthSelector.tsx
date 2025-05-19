@@ -50,7 +50,7 @@ const MonthSelector = ({ currentMonth, setCurrentMonth }: MonthSelectorProps) =>
             }
         }}
         />
-        <Button onClick={handleNextMonth} color={"error"} variant="contained">次月</Button>
+        <Button onClick={handleNextMonth} color={"primary"} variant="contained">次月</Button>
       </Box>
     </LocalizationProvider>
   )

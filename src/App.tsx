@@ -22,6 +22,7 @@ function App() {
 
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // firebaseから全てのデータを取得
@@ -35,7 +36,7 @@ function App() {
             id: doc.id,
           } as Transaction
         })
-        setTransactions(transactionsData)
+        setTransactions(transactionsData);
       } catch(err) {
         if(isFireStoreError(err)) {
           console.error("firebaseのエラーは: ", err)
@@ -44,6 +45,8 @@ function App() {
         } else {
           console.error("一般的なエラーは: ", err)
         }
+       } finally {
+        setIsLoading(false);
        }
     }
     fetchTransactions();
@@ -125,7 +128,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Home monthlyTransactions={monthlyTransactions} setCurrentMonth={setCurrentMonth} onSaveTransaction={handleSaveTransaction} onDeleteTransaction={handleDeleteTransaction} onUpdateTransaction={handleUpdateTransaction}/>}></Route>
-            <Route path='/report' element={<Report currentMonth={currentMonth} setCurrentMonth={setCurrentMonth}/>}></Route>
+            <Route path='/report' element={<Report currentMonth={currentMonth} setCurrentMonth={setCurrentMonth} monthlyTransactions={monthlyTransactions} isLoading={isLoading}/>}></Route>
             <Route path='/*' element={<NoMatch />}></Route>
             </Route>
         </Routes>
