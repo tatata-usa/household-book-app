@@ -2,9 +2,13 @@ import {
   Box,
   Button,
   ButtonGroup,
+  FormControl,
+  FormHelperText,
   IconButton,
+  InputLabel,
   ListItemIcon,
   MenuItem,
+  Select,
   Stack,
   TextField,
   Typography,
@@ -242,22 +246,20 @@ const TransactionForm = ({onCloseForm, isEntryDrawerOpen, currentDay, onSaveTran
             name="category"
             control={control}
             render={({field}) => (
-              <TextField
-                {...field}
-                id="カテゴリ"
-                label="カテゴリ"
-                select
-                error={!!errors.category}
-                helperText={errors.category?.message}>
-                {categories.map((category, index) => (
-                  <MenuItem value={category.label} key={index}>
-                    <ListItemIcon>
-                      {category.icon}
-                    </ListItemIcon>
-                    {category.label}
-                  </MenuItem>
-                ))}
-              </TextField>
+              <FormControl fullWidth error={!!errors.category}>
+                <InputLabel id="category-select-label">カテゴリ</InputLabel>
+                <Select {...field} labelId="category-select-label" id="category-select" label="カテゴリ">
+                  {categories.map((category, index) => (
+                    <MenuItem value={category.label} key={index}>
+                      <ListItemIcon>
+                        {category.icon}
+                      </ListItemIcon>
+                      {category.label}
+                    </MenuItem>
+                  ))}
+                </Select>
+                <FormHelperText>{errors.category?.message}</FormHelperText>
+              </FormControl>
             )}
           />
           {/* 金額 */}

@@ -27,7 +27,7 @@ const Report = ({ currentMonth, setCurrentMonth, monthlyTransactions, isLoading 
         <MonthSelector currentMonth={currentMonth} setCurrentMonth={setCurrentMonth}></MonthSelector>
       </Grid>
       <Grid size={{ xs: 12, md: 4 }}>
-        <Paper sx={commonPaperStyle}><CategoryChart></CategoryChart></Paper>
+        <Paper sx={commonPaperStyle}><CategoryChart monthlyTransactions={monthlyTransactions} isLoading={isLoading}></CategoryChart></Paper>
       </Grid>
       <Grid size={{ xs: 12, md: 8 }}>
         <Paper sx={commonPaperStyle}><BarChart monthlyTransactions={monthlyTransactions} isLoading={isLoading}></BarChart></Paper>

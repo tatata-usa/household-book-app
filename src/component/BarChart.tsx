@@ -68,7 +68,8 @@ const BarChart = ({monthlyTransactions, isLoading}: BarChartProps) => {
 };
 
   return (
-    <Box sx={{
+    <Box
+      sx={{
       flexGrow: 1,
       display: "flex",
       alignItems: "center",
