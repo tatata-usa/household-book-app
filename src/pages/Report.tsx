@@ -19,16 +19,16 @@ const Report = ({ currentMonth, setCurrentMonth }: ReportProps) => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12}>
+      <Grid size={{ xs: 12 }}>
         <MonthSelector currentMonth={currentMonth} setCurrentMonth={setCurrentMonth}></MonthSelector>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid size={{ xs: 12, md: 4 }}>
         <Paper sx={commonPaperStyle}><CategoryChart></CategoryChart></Paper>
       </Grid>
-      <Grid item xs={12} md={8}>
+      <Grid size={{ xs: 12, md: 8 }}>
         <Paper sx={commonPaperStyle}><BarChart></BarChart></Paper>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid size={{ xs: 12, md: 8 }}>
         <TransactionTable></TransactionTable>
       </Grid>
     </Grid>

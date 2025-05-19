@@ -88,11 +88,11 @@ const TransactionMenu = ({dailyTransactions, currentDay, onAddTransactionForm, o
                         alignItems="center"
                         wrap="wrap"
                       >
-                        <Grid item xs={1}>
+                        <Grid size={{ xs: 1 }}>
                           {/* icon */}
                           {IconComponents[transaction.category]}
                         </Grid>
-                        <Grid item xs={2.5}>
+                        <Grid size={{ xs: 2.5 }}>
                           <Typography
                             variant="caption"
                             display="block"
@@ -101,12 +101,12 @@ const TransactionMenu = ({dailyTransactions, currentDay, onAddTransactionForm, o
                             {transaction.category}
                           </Typography>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid size={{ xs: 4 }}>
                           <Typography variant="body2" gutterBottom>
                             {transaction.content}
                           </Typography>
                         </Grid>
-                        <Grid item xs={4.5}>
+                        <Grid size={{ xs: 4.5 }}>
                           <Typography
                             gutterBottom
                             textAlign={"right"}

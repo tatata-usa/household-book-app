@@ -17,7 +17,7 @@ const DailySummary = ({dailyTransactions}: DailySummaryProps) => {
     <Box>
       <Grid container spacing={2}>
         {/* 収入 */}
-        <Grid item xs={6} display={"flex"}>
+        <Grid size={{ xs: 6}} display={"flex"}>
           <Card
             sx={{ bgcolor: (theme) => theme.palette.grey[100], flexGrow: 1 }}
           >
@@ -37,7 +37,7 @@ const DailySummary = ({dailyTransactions}: DailySummaryProps) => {
           </Card>
         </Grid>
         {/* 支出 */}
-        <Grid item xs={6} display={"flex"}>
+        <Grid size={{ xs: 6}} display={"flex"}>
           <Card
             sx={{ bgcolor: (theme) => theme.palette.grey[100], flexGrow: 1 }}
           >
@@ -57,7 +57,7 @@ const DailySummary = ({dailyTransactions}: DailySummaryProps) => {
           </Card>
         </Grid>
         {/* 残高 */}
-        <Grid item xs={12} display={"flex"}>
+        <Grid size={{ xs: 12 }} display={"flex"}>
           <Card
             sx={{ bgcolor: (theme) => theme.palette.grey[100], flexGrow: 1 }}
           >
